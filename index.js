@@ -4,9 +4,11 @@ const { auth } = require("./middlewares/auth.middleware");
 const { productRouter } = require("./routes/products.route");
 const { userRouter } = require("./routes/users.route");
 require("dotenv").config();
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Home Page
 app.get("/", (req, res) => {
