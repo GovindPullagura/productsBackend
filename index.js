@@ -8,16 +8,16 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
+// Home Page
+app.get("/", (req, res) => {
+  res.status(200).send("Welcome to Home Page");
+});
+
 // Routes:
 app.use("/users", userRouter);
 // Auth middleware is required to give authorization for the routes below it.
 app.use(auth);
 app.use("/products", productRouter);
-
-// Home Page
-app.get("/", (req, res) => {
-  res.status(200).send("Welcome to Home Page");
-});
 
 app.listen(process.env.PORT, async () => {
   try {
